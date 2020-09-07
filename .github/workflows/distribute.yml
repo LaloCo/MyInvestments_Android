@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    
+    - uses: actions/checkout@v2
     - name: Download APK
       uses: actions/download-artifact@v2.0.5
       id: download
