@@ -36,5 +36,5 @@ jobs:
         appName: LearnProgrammingAcademy/Example
         token: ${{secrets.APP_CENTER_TOKEN}}
         group: Beta Testers
-        file: ${{steps.download.outputs.download-path}}/app
+        file: ${{steps.download.outputs.download-path}}/app-debug.apk
         notifyTesters: true
