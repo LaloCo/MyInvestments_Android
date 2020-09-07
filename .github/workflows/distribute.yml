@@ -1,0 +1,27 @@
+name: Android CD
+
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    
+    - name: Download APK
+      uses: actions/download-artifact@v2.0.5
+      id: download
+      with:
+        name: app
+        path: ./
+    - name: Distribute to App Center
+      uses: wzieba/AppCenter-Github-Action@v1.2.1
+      with:
+        appName: LearnProgrammingAcademy/Example
+        token: ${{secrets.APP_CENTER_TOKEN}}
+        group: Beta Testers
+        file: ${{steps.download.outputs.download-path}}/app-debug.apk
+        notifyTesters: true
