@@ -24,11 +24,14 @@ jobs:
       with:
         name: app
         path: app/build/outputs/apk/debug/app-debug.apk
+    - name: Download APK
+      uses: actions/download-artifact@v2.0.5
+      id: download
     - name: Distribute to App Center
       uses: wzieba/AppCenter-Github-Action@v1.2.1
       with:
         appName: LearnProgrammingAcademy/Example
         token: ${{secrets.APP_CENTER_TOKEN}}
         group: Beta Testers
-        file: app/build/outputs/apk/debug/app-debug.apk
+        file: ${{steps.download.outputs.download-path}}
         notifyTesters: true
