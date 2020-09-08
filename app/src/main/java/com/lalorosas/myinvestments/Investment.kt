@@ -24,7 +24,8 @@ class Investment {
     }
 
     override fun toString(): String {
-        return "$investmentName ($investmentAmount)"
+        val amountString = NumberFormat.getCurrencyInstance().format(investmentAmount)
+        return "$investmentName ($amountString)"
     }
 }
 
